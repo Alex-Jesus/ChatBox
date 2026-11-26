@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aura | Chat com IA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="script.json">
+</head>
+<body>
+  <div class="container-fluid app">
+    <div class="row g-0 h-100">
+
+      <!-- Coluna 1: histórico de conversas -->
+      <aside id="sidebar" class="col-12 col-lg-3 col-xl-2 sidebar" aria-label="Histórico de conversas">
+        <div class="sidebar__top">
+          <a class="brand" href="./">
+            <span class="brand__mark" aria-hidden="true"></span>
+            <span class="brand__name">Aura</span>
+          </a>
+          <button id="btn-nova" class="btn-new" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Nova conversa
+          </button>
+        </div>
+
+        <nav class="sidebar__nav" aria-label="Conversas salvas">
+          <h2 class="sidebar__title">Recentes</h2>
+          <ul id="lista-conversas" class="list-unstyled"></ul>
+          <p id="lista-vazia" class="sidebar__empty">Suas conversas vão aparecer aqui.</p>
+        </nav>
+
+        <div class="sidebar__user">
+          <span class="avatar" aria-hidden="true">VC</span>
+          <span>Seu perfil</span>
+        </div>
+      </aside>
+
+      <div id="backdrop" class="backdrop" hidden></div>
+
+      <!-- Coluna 2: conversa -->
+      <section class="col-12 col-lg-9 col-xl-10 d-flex flex-column chat" aria-label="Conversa">
+
+        <header class="chat__header">
+          <button id="btn-menu" class="btn-menu d-lg-none" type="button" aria-label="Abrir histórico" aria-controls="sidebar" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          </button>
+          <h1 id="titulo-chat" class="chat__title">Nova conversa</h1>
+        </header>
+
+        <main id="mensagens" class="chat__body" aria-live="polite">
+
+          <!-- Estado vazio: aparece quando não há conversa aberta -->
+          <div id="vazio" class="hero">
+            <span class="hero__mark" aria-hidden="true"></span>
+            <h2 class="hero__title">Como posso ajudar hoje?</h2>
+            <p class="hero__text">Escreva uma mensagem ou comece por uma das ideias abaixo.</p>
+            <div class="row g-2 hero__chips">
+              <div class="col-12 col-sm-6"><button class="chip" type="button">Explique o que é uma API em termos simples</button></div>
+              <div class="col-12 col-sm-6"><button class="chip" type="button">Me dê 5 ideias de projetos para praticar HTML e CSS</button></div>
+              <div class="col-12 col-sm-6"><button class="chip" type="button">Revise este texto e deixe mais claro</button></div>
+              <div class="col-12 col-sm-6"><button class="chip" type="button">Monte um plano de estudos para esta semana</button></div>
+            </div>
+          </div>
+
+          <!-- Mensagens da conversa aberta -->
+          <div id="thread" class="chat__column" hidden></div>
+        </main>
+
+        <footer class="chat__footer">
+          <form id="form-chat" class="composer">
+            <label for="mensagem" class="visually-hidden">Escreva sua mensagem</label>
+            <textarea id="mensagem" class="composer__input" rows="1" placeholder="Escreva sua mensagem..." required></textarea>
+            <button id="btn-enviar" class="composer__send" type="submit" aria-label="Enviar mensagem">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+            </button>
+          </form>
+          <p class="chat__note">A IA pode cometer erros. Confira informações importantes.</p>
+        </footer>
+
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
